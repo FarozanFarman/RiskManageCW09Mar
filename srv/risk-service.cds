@@ -14,6 +14,13 @@ service RiskService {
   ]) as projection on my.Risks;
 
   annotate Risks with @odata.draft.enabled;
+   @readonly
+    entity Suppliers @(restrict : [
+              {
+                  grant : [ 'READ' ],
+                  to : [ 'RiskViewer', 'RiskManager' ]
+              }
+          ]) as projection on my.Suppliers;
 
   entity Mitigations @(restrict : [
     {
