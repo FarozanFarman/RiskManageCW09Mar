@@ -10,6 +10,7 @@ modules:
   - name: cpapp-db
   - name: cpapp-uaa
   - name: cpapp-logs
+  - name: cpapp-destination
   provides:
   - name: srv-api
     properties:
@@ -102,6 +103,19 @@ modules:
     - npm run build:cf
     supported-platforms: []
 resources:
+- name: cpapp-bupa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    skip-service-updates:
+        plan: true
+        parameters: true
+        tags: true
+    service: s4-hana-cloud
+    service-plan: api-access
+    system-name: CPAPP_S4HANA_CLOUDcw9
+    path: ./bupa-service-config.json
+    config:
+        systemName: CPAPP_S4HANA_CLOUDcw9
 - name: cpapp-logs
   type: org.cloudfoundry.managed-service
   parameters:

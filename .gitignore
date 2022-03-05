@@ -10,7 +10,6 @@ target/
 dist/
 resources/
 app/*/package-lock.json
-.env
 
 # Web IDE, App Studio
 .che/
